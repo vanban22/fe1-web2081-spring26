@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink ,RouterLinkActive} from '@angular/router';
 @Component({
   selector: 'app-contact',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
   
