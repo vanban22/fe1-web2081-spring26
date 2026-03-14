@@ -1,0 +1,53 @@
+<p>stories works!</p>
+@for (story of Stories; track story.title) {
+<div class="story-card">
+    <h3>{{story.title}}</h3>
+    <p>Tác giả: {{story.author}} </p>
+    <p>Lượt xem:{{story.views}} </p>
+    <p>Năm sx:{{story.date}} </p>
+    <p>Thể loại:{{story.category}} </p>
+    <p><img [src]="story.image" alt="" width="80px" height="50px"> </p>
+    @if (story.views> 90000) {
+    <p style="color: red;">Hot</p>
+    }
+    @if (Stories.length === 0){
+    <p>Không có truyện nào</p>
+    }
+</div>
+}
+
+@if (Stories.length === 0) {
+<p>Không có truyện nào</p>
+} @else {
+<table border="1">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Hình ảnh</th>
+            <th>Tên truyện</th>
+            <th>Tác giả</th>
+            <th>Lượt xem</th>
+            <th>Độ Hot</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (story of Stories; track story.title; let i = $index) {
+        <tr>
+            <td>{{ i + 1 }}</td>
+            <td><img [src]="story.image" width="80"> </td>
+            <td> {{ story.title }} </td>
+            <td>{{ story.author }}</td>
+            <td>{{ story.views }}</td>
+            <td>@if (story.views> 90000) {
+                <p class="hot">Hot</p>
+                }
+            </td>
+            <th><button (click)="handlClick(story.title)">Click</button>
+            </th>
+        </tr>
+        }
+    </tbody>
+</table>
+
+}

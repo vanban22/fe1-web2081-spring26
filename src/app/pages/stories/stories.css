@@ -1,0 +1,39 @@
+.story-card {
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.hot{
+  font-weight: bold;
+  animation: nhapnhay 1s infinite;
+}
+
+@keyframes nhapnhay {
+  0%{
+    color: red;
+  }
+  50%{
+    color: orange;
+  }
+  100%{
+    color: red;
+  }
+}
