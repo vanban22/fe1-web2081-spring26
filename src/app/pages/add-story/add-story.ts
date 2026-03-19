@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
@@ -11,8 +12,13 @@ export class AddStory {
   addForm: FormGroup;
   bai1Form: FormGroup;
   bai2Form: FormGroup;
-
-  constructor(private fb: FormBuilder) {
+  lab5Form: FormGroup;
+  error = false;
+  errorMessage = '';
+  loading = false;
+  constructor(private fb: FormBuilder,
+    private http: HttpClient,
+  ) {
     this.addForm = this.fb.group({
       title: '',
       author: '',
@@ -29,10 +35,32 @@ export class AddStory {
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     })
+    this.lab5Form = this.fb.group({
+      title: ['', [Validators.required]],
+      author: '',
+      views: '',
+
+    })
   }
 
   submitForm() {
-    console.log(this.addForm.value);
+    console.log(this.lab5Form.value);
+    this.loading = true;
+    this.error = false;
+
+    const data = this.lab5Form.value;
+    this.http.post('http://localhost:3000/stories', data).subscribe({
+      next: () => {
+        alert("them thanh cong")
+        this.loading = false
+        this.lab5Form.reset();
+      },
+      error: (err) => {
+        this.errorMessage = "Có lỗi xảy ra";
+        this.loading = false
+        this.error = true
+      }
+    })
   }
   get name() {
     return this.bai1Form.get('name');
@@ -48,5 +76,8 @@ export class AddStory {
   }
   get password() {
     return this.bai2Form.get('password');
+  }
+  get title() {
+    return this.lab5Form.get('title')
   }
 }

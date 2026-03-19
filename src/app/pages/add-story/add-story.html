@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow">
+<!-- <div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow">
     <h2 class="text-xl font-bold mb-4 text-center">Thêm truyện</h2>
 
     <form [formGroup]="addForm" (ngSubmit)="submitForm()" class="space-y-4">
@@ -80,6 +80,37 @@
         </div>
 
         <button class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+            Thêm
+        </button>
+    </form>
+</div> -->
+
+<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow">
+    <h2 class="text-xl font-bold mb-4 text-center">Thêm truyện</h2>
+
+    <form [formGroup]="lab5Form" (ngSubmit)="submitForm()" class="space-y-4">
+        <div>
+            <label class="block mb-1">title</label>
+            <input type="text" formControlName="title" class="w-full border p-2 rounded">
+            @if(title?.invalid ){
+            <p style="color:red">bắt buộc nhập</p>
+            }
+        </div>
+        <div>
+            <label class="block mb-1">Author</label>
+            <input type="text" formControlName="author" class="w-full border p-2 rounded">
+        </div>
+        <div>
+            <label class="block mb-1">Views</label>
+            <input type="number" formControlName="views" class="w-full border p-2 rounded">
+        </div>
+        @if(loading){
+        <p style="color:blue">Đang thêm dữ liệu...</p>
+        }
+        @if (error) {
+        <p style="color: red">{{ errorMessage }}</p>
+        }
+        <button class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600" [disabled]="loading">
             Thêm
         </button>
     </form>
