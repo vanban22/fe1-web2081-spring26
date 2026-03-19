@@ -115,3 +115,33 @@
         </button>
     </form>
 </div>
+
+<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow">
+    <h2 class="text-xl font-bold mb-4 text-center">bai2</h2>
+
+    <form [formGroup]="bai1Form" (ngSubmit)="submitProduct()" class="space-y-4">
+        <div>
+            <label class="block mb-1">name</label>
+            <input type="text" formControlName="name" class="w-full border p-2 rounded">
+            @if(name?.invalid ){
+            <p style="color:red">bắt buộc nhập</p>
+            }
+        </div>
+        <div>
+            <label class="block mb-1">price</label>
+            <input type="text" formControlName="price" class="w-full border p-2 rounded">
+             @if(price?.errors?.['min']){
+            <p style="color:red">phải lớn hơn 0</p>
+            }
+
+        </div>
+        <div>
+            <label class="block mb-1">category</label>
+            <input type="number" formControlName="category" class="w-full border p-2 rounded">
+        </div>
+
+        <button class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+            Thêm
+        </button>
+    </form>
+</div>

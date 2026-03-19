@@ -62,6 +62,24 @@ export class AddStory {
       }
     })
   }
+  submitProduct() {
+    this.loading = true;
+    this.error = false;
+
+    const data = this.bai1Form.value;
+    this.http.post('http://localhost:3000/product', data).subscribe({
+      next: () => {
+        alert("them thanh cong")
+        this.loading = false
+        this.bai1Form.reset();
+      },
+      error: (err) => {
+        this.errorMessage = "Có lỗi xảy ra";
+        this.loading = false
+        this.error = true
+      }
+    })
+  }
   get name() {
     return this.bai1Form.get('name');
   }
