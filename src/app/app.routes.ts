@@ -6,6 +6,8 @@ import { Products } from './pages/products/products';
 import { ProductsDetail } from './pages/products-detail/products-detail';
 import { Stories } from './pages/stories/stories';
 import { AddStory } from './pages/add-story/add-story';
+import { EditStory } from './pages/edit-story/edit-story';
+import { ViewStory } from './pages/view-story/view-story';
 export const routes: Routes = [
     {
         path: '',
@@ -35,5 +37,13 @@ export const routes: Routes = [
     {
         path:'add-story',
         component: AddStory
+    },
+    {
+        path:'view',
+        component: ViewStory
+    },
+    {
+        path:'edit/:id',
+        component: EditStory
     }
 ];

@@ -1,0 +1,53 @@
+<div class="p-6">
+  <h1 class="text-2xl font-semibold mb-6">cập nhật</h1>
+
+  <form class="space-y-6" [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+    <div>
+      <label htmlFor="text" class="block font-medium mb-1"> title </label>
+      <input type="text" id="text" formControlName="title"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      @if(editForm.get('title')?.touched && editForm.get('title')?.invalid){
+      @if(editForm.get('title')?.errors?.['required']){
+      <p style="color: red;">khong đc để trống</p>
+      }
+      }
+    </div>
+
+    <div>
+      <label htmlFor="text" class="block font-medium mb-1"> quantity </label>
+      <input type="text" id="text" formControlName="quantity"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+
+    <div>
+      <label htmlFor="text" class="block font-medium mb-1"> coverImage </label>
+      <input type="text" id="text" formControlName="coverImage"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+
+    <div>
+      <label htmlFor="text" class="block font-medium mb-1"> genre </label>
+      <select class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        formControlName="genre">
+        <option value="">chọn</option>
+        <option value="Tiểu thuyết">Tiểu thuyết</option>
+        <option value="Khoa học">Khoa học</option>
+        <option value="Lịch sử">Lịch sử</option>
+      </select>
+    </div>
+    <div>
+      <label htmlFor="text" class="block font-medium mb-1"> author </label>
+      <input type="text" id="text" formControlName="author"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <div>
+      <label htmlFor="text" class="block font-medium mb-1"> views </label>
+      <input type="text" id="text" formControlName="views"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <button type="submit" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+      Submit
+    </button>
+  </form>
+</div>
