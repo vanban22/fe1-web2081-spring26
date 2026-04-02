@@ -6,8 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-edit-story',
   imports: [ReactiveFormsModule],
-  templateUrl: './edit-page.html',
-  styleUrl: './edit-page.css',
+  templateUrl: './edit-story.html',
+  styleUrl: './edit-story.css',
 })
 export class EditStory {
   id: any;
