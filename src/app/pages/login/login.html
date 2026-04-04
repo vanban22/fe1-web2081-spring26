@@ -1,0 +1,57 @@
+<div class="p-6">
+  <h1 class="text-2xl font-semibold mb-6">Login</h1>
+
+  <form [formGroup]="form" class="space-y-6" (ngSubmit)="submitForm()">
+    <div>
+      <label htmlFor="email" class="block font-medium mb-1"> Email </label>
+      <input formControlName="email" type="email" id="email"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      @if(email?.touched && email?.invalid){
+      <div class="text-red-500 text-sm mt-1">
+        @if(email?.hasError('required')){
+        <p>khong dc de trong</p>
+        }
+        @if (email?.hasError('email')) {
+        <p>định dạng email</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div>
+      <label htmlFor="password" class="block font-medium mb-1">
+        Password
+      </label>
+      <input formControlName="password" type="password" id="password"
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      @if(password?.touched && password?.invalid){
+      <div class="text-red-500 text-sm mt-1">
+        @if(password?.hasError('required')){
+        <p>khong dc de trong</p>
+        }
+        @if (password?.hasError('minLength')) {
+        <p>lớn hơn 6 kitu</p>
+        }
+      </div>
+      }
+    </div>
+    <button type="submit" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+      Submit
+    </button>
+  </form>
+    @if (user) {
+    <div class="mt-6 p-4 border rounded-lg bg-gray-50">
+      <h2 class="font-semibold mb-2">thong tin</h2>
+      <p><strong>ID:</strong> {{ user.id }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+
+      <button
+        type="button"
+        (click)="logout()"
+        class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg"
+      >
+        Logout
+      </button>
+    </div>
+  }
+</div>
